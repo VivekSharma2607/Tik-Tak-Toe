@@ -1,6 +1,5 @@
 from email import message
-import email
-import re
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.shortcuts import redirect 
 from .models import *
@@ -77,7 +76,7 @@ def verify(request , auth_token):
 
 def success(request):
     return render(request , 'success.html')
-
+@login_required
 def game(request):
     return render(request , 'game.html')
 
