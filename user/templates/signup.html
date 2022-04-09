@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <div class="min-h-screen flex items-center justify-center bg-blue-400">
+        <div class="bg-white p-16 rounded shawdow-2xl w-2/3">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+                <p class="font-bold">Informational message</p>
+                <p class="text-sm">{{message}}</p>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <h2 class="text-3xl font-bold mb-8 text-purple-800">Create Your Account</h2>
+            <form class="space-y-5" method="POST">
+                {% csrf_token %}
+                <div>
+                    <label class="block mb-2 font-bold text-gray-500 ">Name</label>
+                    <input type="text"
+                        class="w-full rounded border border-gray-200 p-3 outline-none focus:border-purple-500" id="name"
+                        name="username">
+                </div>
+                <div>
+                    <label class="block mb-2 font-bold text-gray-500">Email</label>
+                    <input type="text"
+                        class="w-full rounded border border-gray-200 p-3 outline-none focus:border-purple-500"
+                        id="email" name="email">
+                </div>
+                <div>
+                    <label class="block mb-2 font-bold text-gray-500">Password</label>
+                    <input type="text"
+                        class="w-full rounded border border-gray-200 p-3 outline-none focus:border-purple-500"
+                        id="password" name="password">
+                </div>
+                <div class="flex items-center text-center">
+                    <input type="checkbox" id="agree">
+                    <label for="agree" class="ml-2 text-gray-700 text-sm">I agree to the terms and conditions</label>
+                </div>
+                <button
+                    class="block w-full bg-yellow-400 hover:bg-yellow-300 p-4 rounded text-yellow-900 hover:text-yellow-800 transition duration-300">Sign
+                    Up
+                </button>
+            </form>
+            <br>
+            <dl class="text-center">Already had an account?</dl>
+            <button class="block w-full bg-yellow-400 hover:bg-yellow-300 p-4 rounded text-yellow-900 hover:text-yellow-800 transition duration-300" href = "{% url 'login' %}">LogIn</button>
+        </div>
+    </div>
+</body>
+
+</html>
